@@ -154,7 +154,7 @@ else:
 
             if st.button(f"Analyze {item['Name']}", key=f"btn_{i}", use_container_width=True):
                  st.session_state['selected_coin'] = item['Ticker']
-                #  st.switch_page("pages/Detail.py")
+                 st.switch_page("pages/Detail.py")
 
 # MARKET TABLE (ROW 2)
 st.markdown("###")
