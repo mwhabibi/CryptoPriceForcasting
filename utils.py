@@ -1,3 +1,5 @@
+import pandas as pd
+import numpy as np
 import yfinance as yf
 import streamlit as st
 from datetime import datetime
@@ -102,3 +104,58 @@ def get_market_summary():
             continue
     
     return summary_data, fetch_time
+
+@st.cache_data(ttl=3600)
+def get_data_with_indikacators(ticker, start, end, interval):
+    """Mengambil data historis dan melakukan feature engineering dengan aman"""
+    try:
+        # PERBAIKAN MLOps: Gunakan Ticker().history() karena lebih stabil dari download()
+        t = yf.Ticker(ticker)
+        df = t.history(start=start, end=end, interval=interval)
+
+        if df is None or df.empty:
+            return pd.DataFrame()
+
+        # Penting untuk Plotly/Streamlit: Buang zona waktu (timezone) agar tidak error saat di-plot
+        if df.index.tz is not None:
+            df.index = df.index.tz_localize(None)
+
+        # Pastikan kolom yang dibutuhkan tersedia sebelum kalkulasi
+        required_cols = ['Open', 'High', 'Low', 'Close', 'Volume']
+        if not all(col in df.columns for col in required_cols):
+            return pd.DataFrame()
+
+        # Features engineering
+        df['Log_Ret'] = np.log(df['Close'] / df['Close'].shift(1))
+
+        # RSI (momentum)
+        delta = df['Close'].diff()
+        gain = delta.where(delta > 0, 0).rolling(window=14).mean()
+        loss = -delta.where(delta < 0, 0).rolling(window=14).mean()
+        rs = gain / loss
+        df['RSI'] = 100 - (100 / (1 + rs))
+
+        # MACD (trend)
+        ema12 = df['Close'].ewm(span=12, adjust=False).mean()
+        ema26 = df['Close'].ewm(span=26, adjust=False).mean()
+        df['MACD'] = ema12 - ema26
+        df['MACD_Signal'] = df['MACD'].ewm(span=9, adjust=False).mean()
+
+        # ATR (volatilitas)
+        high_low = df['High'] - df['Low']
+        high_close = np.abs(df['High'] - df['Close'].shift(1))
+        low_close = np.abs(df['Low'] - df['Close'].shift(1))
+
+        ranges = pd.concat([high_low, high_close, low_close], axis=1)
+        true_range = np.max(ranges, axis=1)
+
+        df['ATR'] = true_range.rolling(window=14).mean()
+
+        # Buang baris kosong akibat shifting
+        df.dropna(inplace=True)
+        
+        return df
+
+    except Exception as e:
+        print(f"Error mengambil data {ticker}: {e}")
+        return pd.DataFrame()
