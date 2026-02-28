@@ -1,0 +1,22 @@
+{
+    "BTC-USD": {
+        "RMSE": 1722.53498411,
+        "MAPE": 1.36
+    },
+    "ETH-USD": {
+        "RMSE": 93.10996434,
+        "MAPE": 2.04
+    },
+    "DOGE-USD": {
+        "RMSE": 0.00574872,
+        "MAPE": 3.04
+    },
+    "SHIB-USD": {
+        "RMSE": 5.8e-07,
+        "MAPE": 4.22
+    },
+    "FLOKI-USD": {
+        "RMSE": 3.02e-06,
+        "MAPE": 5.08
+    }
+}

@@ -1,0 +1,72 @@
+Working Directory Script: /home/syreina/Documents/TA/CryptoPriceForecasting
+Folder Models terdeteksi di: /home/syreina/Documents/TA/CryptoPriceForecasting/models
+Folder Scalers terdeteksi di: /home/syreina/Documents/TA/CryptoPriceForecasting/scalers
+Gambar akan disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/hasil_ujicobamodel
+
+======================================================================
+MEMULAI PENGUJIAN VALIDASI MODEL (1-21 Jan 2026)
+======================================================================
+
+Analisis Koin: BTC-USD
+Jeda 3 detik agar aman dari blokir Yahoo Finance API...
+Downloading data BTC-USD...
+Melakukan simulasi prediksi...
+HASIL AKHIR (1-21 Jan 2026):
+RMSE    : $1722.5350
+MAE     : $1257.3484
+MAPE    : 1.36%
+AKURASI : 98.64%
+Gambar grafik disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/hasil_ujicobamodel/BTC-USD_ujicobamodel.png
+----------------------------------------------------------------------
+
+Analisis Koin: ETH-USD
+Jeda 3 detik agar aman dari blokir Yahoo Finance API...
+Downloading data ETH-USD...
+Melakukan simulasi prediksi...
+HASIL AKHIR (1-21 Jan 2026):
+RMSE    : $93.1100
+MAE     : $64.3691
+MAPE    : 2.04%
+AKURASI : 97.96%
+Gambar grafik disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/hasil_ujicobamodel/ETH-USD_ujicobamodel.png
+----------------------------------------------------------------------
+
+Analisis Koin: DOGE-USD
+Jeda 3 detik agar aman dari blokir Yahoo Finance API...
+Downloading data DOGE-USD...
+Melakukan simulasi prediksi...
+HASIL AKHIR (1-21 Jan 2026):
+RMSE    : $0.0057
+MAE     : $0.0042
+MAPE    : 3.04%
+AKURASI : 96.96%
+Gambar grafik disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/hasil_ujicobamodel/DOGE-USD_ujicobamodel.png
+----------------------------------------------------------------------
+
+Analisis Koin: SHIB-USD
+Jeda 3 detik agar aman dari blokir Yahoo Finance API...
+Downloading data SHIB-USD...
+Melakukan simulasi prediksi...
+HASIL AKHIR (1-21 Jan 2026):
+RMSE    : $0.0000
+MAE     : $0.0000
+MAPE    : 4.22%
+AKURASI : 95.78%
+Gambar grafik disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/hasil_ujicobamodel/SHIB-USD_ujicobamodel.png
+----------------------------------------------------------------------
+
+Analisis Koin: FLOKI-USD
+Jeda 3 detik agar aman dari blokir Yahoo Finance API...
+Downloading data FLOKI-USD...
+Melakukan simulasi prediksi...
+HASIL AKHIR (1-21 Jan 2026):
+RMSE    : $0.0000
+MAE     : $0.0000
+MAPE    : 5.08%
+AKURASI : 94.92%
+Gambar grafik disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/hasil_ujicobamodel/FLOKI-USD_ujicobamodel.png
+----------------------------------------------------------------------
+
+✅ File metrik berhasil disimpan di: /home/syreina/Documents/TA/CryptoPriceForecasting/metrics.json
+
+PENGUJIAN SELESAI.
